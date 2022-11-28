@@ -1,9 +1,13 @@
 # Website well-known Contracts [Draft]
 
+### Draft
+
 <aside>
 🚧 This document is a work in progress, we are gathering feedback and suggestions to arrive at a complete specification.
 
 </aside>
+
+### Inspiration
 
 Inspired by Content Security Policy (CSP) [https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
 
@@ -11,7 +15,7 @@ Inspired by Content Security Policy (CSP) [https://developer.mozilla.org/en-US/d
 
 Currently there is no standard way to tell what contracts a website is expected to call. This means that a hacked site can request a signature for any contract, it can steal your tokens, cause you to sign a multisig compromising an organization, or otherwise damage the user.
 
-Another problem is that any site can call a smart contract, and this means that any site is part of the attack surface. A hack on aj ecommerce store, a blog, or really any web page can lead to a legitimate site draining a user's wallet.
+Another problem is that any site can call a smart contract, and this means that any site is part of the attack surface. A hack on an ecommerce store, a blog, or really any web page can lead to a legitimate site draining a user's wallet.
 
 # Proposed Solution
 
