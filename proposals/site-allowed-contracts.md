@@ -160,7 +160,7 @@ A sample library of making these checks will soon be released.
 
 ## .well-known/contracts page vs Using Headers vs <meta> Tag
 
-Is the best way to share and expose this data through a page server on the domain, something like [mysite.com/.well-known/contracts](http://mysite.com/.well-known/contracts) , or by using headers on the site itself similar to CSP.
+Is the best way to expose this data via a [well-known URL](https://www.rfc-editor.org/rfc/rfc8615), ex. [mysite.com/.well-known/contracts](http://mysite.com/.well-known/contracts), or by using HTTP headers on the web server that serves the site similar to [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP).
 
 # FAQ and Decisions
 
