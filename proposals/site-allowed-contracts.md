@@ -152,9 +152,15 @@ Check if a contract and chain are on the list. Any call not on the list should b
 
 # Wallet implementation
 
+## Warn the User
+
 Show a warning to the user when triggering a transaction if the contract does not match the list published by the website.
 
-A console error should also be logged to make it easier for the site's developers to detect when their site is having a problem due to transactions not matching their contract list.
+## Log an Error
+
+A console error should be logged to make it easier for the site's developers to detect when their site is having a problem due to transactions not matching their contract list.
+
+## Sample Implementation
 
 A sample library of making these checks will soon be released.
 
