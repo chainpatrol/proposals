@@ -91,6 +91,8 @@ Don't do any checks. Similar to wildcard.
 
 ## No Contract Calls Allowed
 
+This is a way for a site to specify it should not be interacting with any smart contracts, to protect their users. This is useful for traditional site like amazon, youtube, or your blog to specify that any transaction requested from them is an attack and should be blocked.
+
 ```jsx
 //.well-known/contracts
 {
@@ -150,21 +152,9 @@ Check if a contract and chain are on the list. Any call not on the list should b
 
 # Wallet implementation
 
-We recommend warning users. Outright blocking similar to CSP can be done once the standard is more widely accepted.
+Show a warning to the user when triggering a transaction if the contract does not match the list published by the website.
 
-## Early Stage
-
-The contract list is fully checked
-
-Sites without a contract list are not warned about since the standard is still being adopted.
-
-## End Game
-
-Once the standard has been adopted allowing website developers with contracts to have time to at least add a wildcard on their site.
-
-Any site that asks to sign a transaction for a contract without a contract list present should trigger a warning to the user.
-
-Contract list is fully checked
+A sample library of making these checks will soon be released.
 
 # Open Questions
 
