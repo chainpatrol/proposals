@@ -33,7 +33,7 @@ Code reviews can help with this, but there need to be clearer mechanisms to dete
 
 # Proposed Solution
 
-Websites that interact with smart contracts should publish a list that lets wallets and other interfaces know what contracts the website is expected to call.
+Websites that interact with smart contracts should publish a list at `/.well-known/contracts` that lets wallets and other interfaces know what contracts the website is expected to call.
 
 Any transaction initiated on a site using a contract not on the list is treated as suspicious, and the user can be shown a warning
 
