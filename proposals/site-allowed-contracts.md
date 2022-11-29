@@ -94,7 +94,6 @@ Any transaction initiated on a site using a contract not on the list is treated 
 Check if a contract and chain are on the list. Any call not on the list should be blocked or at least warned about.
 
 ```json
-//.well-known/contracts
 {
   "contracts": [
     {
@@ -110,7 +109,6 @@ Check if a contract and chain are on the list. Any call not on the list should b
 In this sample only contracts on the Ethereum (1) and Polygon (137) networks are allowed. (Network IDs pulled from [ChainList](https://chainlist.org/))
 
 ```json
-//.well-known/contracts
 {
   "contracts": [
     {
@@ -132,7 +130,6 @@ You could also set up TestNet IDs instead in your test environment.
 Any smart contract is allowed from any chain
 
 ```json
-//.well-known/contracts
 {
   "contracts": [
     {
@@ -148,7 +145,6 @@ Any smart contract is allowed from any chain
 This is a way for a site to specify it should not be interacting with any smart contracts, to protect their users. This is useful for traditional site like amazon, youtube, or your blog to specify that any transaction requested from them is an attack and should be blocked.
 
 ```json
-//.well-known/contracts
 {
   "contracts": []
 }
