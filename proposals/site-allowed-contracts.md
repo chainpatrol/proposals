@@ -118,7 +118,7 @@ Any smart contract is allowed from any chain
 
 ## Wild Card for Networks/Chains
 
-In this sample only networks on Ethereum (1) and Polygon (137) are allowed.
+In this sample only networks on Ethereum (1) and Polygon (137) are allowed. (Network IDs pulled from [ChainList](https://chainlist.org/))
 
 ```jsx
 //.well-known/contracts
@@ -174,6 +174,10 @@ Future versions may have more details on the each contract, such as which functi
 
 Content Security Policy (CSP) [https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
 
+CORS [https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+
 Yearn Finance Allowlist [https://medium.com/iearn/yearn-allowlist-71757d4e3cf4](https://medium.com/iearn/yearn-allowlist-71757d4e3cf4)
 
 Uniswap Token Lists [https://uniswap.org/blog/token-lists](https://uniswap.org/blog/token-lists)
+
+ChainList [https://chainlist.org/](https://chainlist.org/)
