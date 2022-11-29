@@ -98,9 +98,9 @@ Check if a contract and chain are on the list. Any call not on the list should b
   "contracts": [
     {
       "chainId": "1",
-      "contractId": "0xBd3531dA5CF5857e7CfAA92426877b022e612cf8",
-    },
-  ];
+      "contractId": "0xBd3531dA5CF5857e7CfAA92426877b022e612cf8"
+    }
+  ]
 }
 ```
 
@@ -113,13 +113,13 @@ In this sample only contracts on the Ethereum (1) and Polygon (137) networks are
   "contracts": [
     {
       "chainId": "1",
-      "contractId": "*",
+      "contractId": "*"
     },
     {
       "chainId": "137",
-      "contractId": "*",
-    },
-  ];
+      "contractId": "*"
+    }
+  ]
 }
 ```
 
@@ -134,9 +134,9 @@ Any smart contract is allowed from any chain
   "contracts": [
     {
       "chainId": "*",
-      "contractId": "*",
-    },
-  ];
+      "contractId": "*"
+    }
+  ]
 }
 ```
 
