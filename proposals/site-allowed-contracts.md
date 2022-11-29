@@ -180,7 +180,7 @@ Is the best way to expose this data via a [well-known URL](https://www.rfc-edito
 
 ## Contract Details, Functions, and CallData
 
-We chose to keep the spec to just the networkId and contractId to make it easier to agree on the core concept of the list and make the first version easier to implement and adopt.
+We chose to limit the scope of the spec to just the `networkId` and `contractId` to make it easier to agree on the core concept of the list and make the first version easier to implement and adopt.
 
 Future versions may have more details on the each contract, such as which function calls are expected, similar to the [Yearn Allowlist](https://medium.com/iearn/yearn-allowlist-71757d4e3cf4).
 
