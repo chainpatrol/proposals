@@ -116,7 +116,7 @@ Any smart contract is allowed from any chain
 }
 ```
 
-## Wild Card for Networks/Chains
+## Wildcard Specifier for Networks/Chains
 
 In this sample only networks on Ethereum (1) and Polygon (137) are allowed. (Network IDs pulled from [ChainList](https://chainlist.org/))
 
