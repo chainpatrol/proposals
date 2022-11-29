@@ -7,6 +7,10 @@
 
 </aside>
 
+### Abstract
+
+This proposal defines a new ".well-known" web resource (as defined in [RFC-8614](https://www.rfc-editor.org/rfc/rfc8615) for EVM smart contracts. It provides an interface for website authors to hint to crypto wallets what transactions (if any) to expect from a site during a user agent's web browsing session. In doing so, it helps crypto wallets better warn users about unexpected or potentially malicious transactions.
+
 ### Inspiration
 
 Inspired by Content Security Policy (CSP) [https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
