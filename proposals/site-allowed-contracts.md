@@ -85,32 +85,17 @@ Any transaction initiated on a site using a contract not on the list is treated 
 
 # Examples
 
-## No well-known is present
+## Specific list
 
-Don't do any checks. Similar to wildcard.
-
-## No Contract Calls Allowed
-
-This is a way for a site to specify it should not be interacting with any smart contracts, to protect their users. This is useful for traditional site like amazon, youtube, or your blog to specify that any transaction requested from them is an attack and should be blocked.
-
-```jsx
-//.well-known/contracts
-{
-    contracts: [],
-}
-```
-
-## Wild Card
-
-Any smart contract is allowed from any chain
+Check if a contract and chain are on the list. Any call not on the list should be blocked or at least warned about.
 
 ```jsx
 //.well-known/contracts
 {
   contracts: [
     {
-      chainId: "*",
-      contractId: "*",
+      chainId: "1",
+      contractId: "0xBd3531dA5CF5857e7CfAA92426877b022e612cf8",
     },
   ];
 }
@@ -134,21 +119,36 @@ In this sample only networks on Ethereum (1) and Polygon (137) are allowed. (Net
 
 You could also set up TestNet IDs instead in your test environment.
 
-## Specific list
+## Wild Card
 
-Check if a contract and chain are on the list. Any call not on the list should be blocked or at least warned about.
+Any smart contract is allowed from any chain
 
 ```jsx
 //.well-known/contracts
 {
   contracts: [
     {
-      chainId: "1",
-      contractId: "0xBd3531dA5CF5857e7CfAA92426877b022e612cf8",
+      chainId: "*",
+      contractId: "*",
     },
   ];
 }
 ```
+
+## No Contract Calls Allowed
+
+This is a way for a site to specify it should not be interacting with any smart contracts, to protect their users. This is useful for traditional site like amazon, youtube, or your blog to specify that any transaction requested from them is an attack and should be blocked.
+
+```jsx
+//.well-known/contracts
+{
+    contracts: [],
+}
+```
+
+## No well-known is present
+
+Don't do any checks. Similar to wildcard.
 
 # Wallet implementation
 
