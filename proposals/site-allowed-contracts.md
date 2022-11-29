@@ -156,6 +156,8 @@ Don't do any checks. Similar to wildcard.
 
 Show a warning to the user when triggering a transaction if the contract does not match the list published by the website.
 
+This should be done for all transactions coming from the site that have a contract included.
+
 ## Log an Error
 
 A console error should be logged to make it easier for the site's developers to detect when their site is having a problem due to transactions not matching their contract list.
