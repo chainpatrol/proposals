@@ -107,7 +107,7 @@ Check if a contract and chain are on the list. Any call not on the list should b
 
 ## Wildcard Specifier for Networks/Chains
 
-In this sample only networks on Ethereum (1) and Polygon (137) are allowed. (Network IDs pulled from [ChainList](https://chainlist.org/))
+In this sample only contracts on the Ethereum (1) and Polygon (137) networks are allowed. (Network IDs pulled from [ChainList](https://chainlist.org/))
 
 ```json
 //.well-known/contracts
@@ -115,6 +115,10 @@ In this sample only networks on Ethereum (1) and Polygon (137) are allowed. (Net
   "contracts": [
     {
       "chainId": "1",
+      "contractId": "*",
+    },
+    {
+      "chainId": "137",
       "contractId": "*",
     },
   ];
