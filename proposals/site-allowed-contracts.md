@@ -13,21 +13,29 @@ Inspired by Content Security Policy (CSP) [https://developer.mozilla.org/en-US/d
 
 # Problem Definition
 
-Currently there is no standard way to tell what contracts a website is expected to call. This means that a hacked site can request a signature for any contract, it can steal your tokens, cause you to sign a multisig compromising an organization, or otherwise damage the user.
+Currently a site that requests signatures can ask you to sign any transaction, even transactions that the site was not intended for.
 
-Another problem is that any site can call a smart contract, and this means that any site is part of the attack surface. A hack on an ecommerce store, a blog, or really any web page can lead to a legitimate site draining a user's wallet.
+For example, an NFT marketplace can request to sign a multi sig that drains your DAO Treasury, or a Defi app meant only to swap tokens can request to move all your NFTs out of your wallet.
+
+## Code Injection
+
+This means that malicious code injected into a website can access all the contents and permissions of a user's wallet, where the only thing protecting a user is their own decision making.
+
+## Rogue Developers
+
+This also means that one rogue developer at any dapp has the potential to drain all of the dapp users' wallets.
+
+Code reviews can help with this, but there need to be clearer mechanisms to detect and prevent these attacks.
 
 # Proposed Solution
 
-Websites that interact with smart contracts should publish a list that let's wallets and other interfaces know what contracts the website is expected to call.
+Websites that interact with smart contracts should publish a list that lets wallets and other interfaces know what contracts the website is expected to call.
 
-Any transaction from a site that requests a contract not on the list can then be treated as suspicious, and the user can be warned.
-
-Also, as standards become more widely adopted, sites should be treated as unexpected to call a smart contract unless they explicitly declare it by providing a list.
+Any transaction initiated on a site using a contract not on the list is treated as suspicious, and the user can be shown a warning
 
 # Technical Details
 
-## Format
+## Outline
 
 ```jsx
 //.well-known/contracts
@@ -35,24 +43,62 @@ Also, as standards become more widely adopted, sites should be treated as unexpe
   contracts: [
     {
       chainId: "string",
-      contracted: "string",
+      contractId: "string",
     },
   ];
 }
 ```
 
-## Cases
+## Schema
 
-### No well-known is present
+```jsx
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "contracts": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "chainId": {
+              "type": "string"
+            },
+            "contractId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "chainId",
+            "contractId"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "contracts"
+  ]
+}
+```
 
-The site is not expected to call any smart contacts. If it does call a smart contract treat it as suspicious. This is how CORS works where by default all External requests are blocked.
+# Examples
+
+## No well-known is present
+
+Don't do any checks. Similar to wildcard.
+
+## No Contract Calls Allowed
 
 ```jsx
 //.well-known/contracts
-undefined;
+{
+    contracts: [],
+}
 ```
 
-### wild card
+## Wild Card
 
 Any smart contract is allowed from any chain
 
@@ -62,38 +108,45 @@ Any smart contract is allowed from any chain
   contracts: [
     {
       chainId: "*",
-      contracted: "*",
+      contractId: "*",
     },
   ];
 }
 ```
 
-### Wild Card for Networks/Chains
+## Wild Card for Networks/Chains
 
 In this sample only networks on Ethereum (1) and Polygon (137) are allowed.
 
 ```jsx
 //.well-known/contracts
 {
-	contracts:
-	[
-		{
-			"chainId": "1",
-			"contracted": "*"
-		}
-		{
-			"chainId": "137",
-			"contracted": "*"
-		}
-	]
+  contracts: [
+    {
+      chainId: "1",
+      contractId: "*",
+    },
+  ];
 }
 ```
 
 You could also set up TestNet IDs instead in your test environment.
 
-### Specific list
+## Specific list
 
 Check if a contract and chain are on the list. Any call not on the list should be blocked or at least warned about.
+
+```jsx
+//.well-known/contracts
+{
+  contracts: [
+    {
+      chainId: "1",
+      contractId: "0xBd3531dA5CF5857e7CfAA92426877b022e612cf8",
+    },
+  ];
+}
+```
 
 # Wallet implementation
 
@@ -119,14 +172,13 @@ Contract list is fully checked
 
 Is the best way to share and expose this data through a page server on the domain, something like [mysite.com/.well-known/contracts](http://mysite.com/.well-known/contracts) , or by using headers on the site itself similar to CSP.
 
-Another alternative is using the meta tag, similar to CSP [https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+# FAQ and Decisions
 
-```html
-<meta
-  http-equiv="Content-Security-Policy"
-  content="default-src 'self'; img-src https://*; child-src 'none';"
-/>
-```
+## Contract Details, Functions, and CallData
+
+We chose to keep the spec to just the networkId and contractId to make it easier to agree on the core concept of the list and make the first version easier to implement and adopt.
+
+Future versions may have more details on the each contract, such as which function calls are expected, similar to the [Yearn Allowlist](https://medium.com/iearn/yearn-allowlist-71757d4e3cf4).
 
 # References
 
