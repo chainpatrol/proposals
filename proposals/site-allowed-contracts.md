@@ -19,11 +19,11 @@ For example, an NFT marketplace can request to sign a multi sig that drains your
 
 ## Code Injection
 
-This means that malicious code injected into a website can access all the contents and permissions of a user's wallet, where the only thing protecting a user is their own decision making.
+Malicious code injected into a website can access all the contents and permissions of a user's wallet, where the only thing protecting a user is their own decision making.
 
 ## Rogue Developers
 
-This also means that one rogue developer at any dapp has the potential to drain all of the dapp users' wallets.
+One rogue developer at any dapp has the potential to drain all of the dapp users' wallets.
 
 Code reviews can help with this, but there need to be clearer mechanisms to detect and prevent these attacks.
 
